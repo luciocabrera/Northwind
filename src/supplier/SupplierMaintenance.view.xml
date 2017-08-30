@@ -1,0 +1,125 @@
+<mvc:View 
+	controllerName="sap.ui.demo.wt.supplier.SupplierMaintenance"
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:f="sap.ui.layout.form"
+	busyIndicatorDelay="0">
+	<Page id="supplierMaintenancePage"
+		title="{i18n>Supplier.SupplierMaintenaneOf}"
+		showNavButton="true" 
+		navButtonPress="onNavBack" 
+		class="sapUiResponsiveContentPadding">
+		<content>
+			<Panel 
+				id="supplierPanel" 
+				width="auto"
+				class="sapUiResponsiveMargin sapUiNoContentPadding">
+				<headerToolbar>
+					<Toolbar>
+						<Title 
+							text="{i18n>Supplier.SupplierID} {northwindRemote>SupplierID}"
+							level="H2" />
+						<ToolbarSpacer />
+						<Button 
+							icon="sap-icon://save" 
+							press="onSaveRecord"
+							tooltip="{i18n>General.onSaveUpdateButtonTooltip}" />
+						<Button 
+							icon="sap-icon://cancel" 
+							press="onCancelUpdate"
+							tooltip="{i18n>General.onCancelUpdateButtonTooltip}" />
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm 
+						minWidth="1024" 
+						editable="false"
+						layout="ResponsiveGridLayout" 
+						labelSpanL="3" 
+						labelSpanM="3"
+						emptySpanL="4" 
+						emptySpanM="4" 
+						columnsL="1" 
+						columnsM="1">
+						<f:content>
+							<Input 
+								visible="false" 
+								enabled="false" 
+								id="idSupplierIDEdit"
+								value="{northwindRemote>SupplierID}" />
+							<Label text="{i18n>Supplier.CompanyName}" />
+							<Input 
+								id="idSupplierCompanyNameEdit"
+								required = "true"
+								maxLength= "40"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>CompanyName}" />
+							<Label text="{i18n>Supplier.ContactName}" />
+							<Input 
+								id="idSupplierContactNameEdit"
+								required = "true"
+								maxLength= "30"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>ContactName}" />
+							<Label text="{i18n>Supplier.ContactTitle}" />
+							<Input 
+								id="idSupplierContactTitleEdit"
+								maxLength= "30"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>ContactTitle}" />
+							<Label text="{i18n>Supplier.Address}" />
+							<Input 
+								id="idSupplierAddressEdit"
+								maxLength= "60"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>Address}" />
+							<Label text="{i18n>Supplier.City}" />
+							<Input 
+								id="idSupplierCityEdit"
+								maxLength= "15"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>City}" />
+							<Label text="{i18n>Supplier.Region}" />
+							<Input 
+								id="idSupplierRegionEdit"
+								maxLength= "15"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>Region}" />
+							<Label text="{i18n>Supplier.PostalCode}" />
+							<Input 
+								id="idSupplierpPostalCodeEdit"
+								maxLength= "10"
+								liveChange="onLiveChangeString"								
+								value="{northwindRemote>PostalCode}" />
+							<Label text="{i18n>Supplier.Country}" />
+							<Input 
+								id="idSupplierpCountryEdit"
+								maxLength= "15"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>Country}" />
+							<Label text="{i18n>Supplier.Phone}" />
+							<Input 
+								id="idSupplierpPhoneEdit"
+								maxLength= "24"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>Phone}" />
+							<Label text="{i18n>Supplier.Fax}" />
+							<Input 
+								id="idSupplierpFaxEdit"
+								maxLength= "24"
+								liveChange="onLiveChangeString"
+								value="{northwindRemote>Fax}" />
+							<Label text="{i18n>Supplier.HomePage}" />
+							<Input 
+								id="idSupplierpHomePageEdit"
+								maxLength= "5000"
+								change="onChangeUrlField"
+								value="{northwindRemote>HomePage}" />
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+
+</mvc:View>

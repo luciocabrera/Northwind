@@ -1,0 +1,105 @@
+<mvc:View
+	controllerName="sap.ui.demo.wt.supplier.Supplier"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	busyIndicatorDelay="0">
+	<Page
+		id="supplierPage"
+		title="{i18n>Supplier.SupplierDetailsOf}"
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		class="sapUiResponsiveContentPadding">
+		<content>
+			<Panel
+				id="supplierPanel"
+				width="auto"
+				class="sapUiResponsiveMargin sapUiNoContentPadding">
+				<headerToolbar>
+					<Toolbar>
+						<Title 
+							text="{i18n>Supplier.SupplierID} {northwindRemote>SupplierID}" 
+							level="H2"/>
+						<ToolbarSpacer />
+						<Button 
+							icon="sap-icon://product" 
+							press="onNavToSupplierProducts"
+							tooltip="{i18n>Supplier.NavToProductsButtonTooltip}" />
+						<ToolbarSeparator />
+						<Button 
+							icon="sap-icon://edit" 
+							press="onNavToMaintenance"
+							tooltip="{i18n>Supplier.ModifyRegisterTooltip}" />
+						<Button 
+							icon="sap-icon://delete" 
+							press="onDeleteRecord" 
+							tooltip="{i18n>Supplier.DeleteRegisterTooltip}" />
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout"
+						labelSpanL="3" 
+						labelSpanM="3" 
+						emptySpanL="4" 
+						emptySpanM="4"
+						columnsL="1" 
+						columnsM="1">
+						<f:content>
+							<Label text="{i18n>Supplier.SupplierID}" />
+							<Text 
+								id="idSupplierID"
+								text="{northwindRemote>SupplierID}" />
+							<Label text="{i18n>Supplier.CompanyName}" />
+							<Text 
+								id="idSupplierCompanyName"
+								text="{northwindRemote>CompanyName}" />
+							<Label text="{i18n>Supplier.ContactName}" />
+							<Text 
+								id="idSupplierContactName"
+								text="{northwindRemote>ContactName}" />
+							<Label text="{i18n>Supplier.ContactTitle}" />
+							<Text 
+								id="idSupplierContactTitle"
+								text="{northwindRemote>ContactTitle}" />
+							<Label text="{i18n>Supplier.Address}" />
+							<Text 
+								id="idSupplierAddress"
+								text="{northwindRemote>Address}" />
+							<Label text="{i18n>Supplier.City}" />
+							<Text 
+								id="idSupplierCity"
+								text="{northwindRemote>City}" />
+							<Label text="{i18n>Supplier.Region}" />
+							<Text 
+								id="idSupplierRegion"
+								text="{northwindRemote>Region}" />
+							<Label text="{i18n>Supplier.PostalCode}" />
+							<Text 
+								id="idSupplierpPostalCode"
+								text="{northwindRemote>PostalCode}" />
+							<Label text="{i18n>Supplier.Country}" />
+							<Text 
+								id="idSupplierpCountry"
+								text="{northwindRemote>Country}" />
+							<Label text="{i18n>Supplier.Phone}" />
+							<Text 
+								id="idSupplierpPhone"
+								text="{northwindRemote>Phone}" />
+							<Label text="{i18n>Supplier.Fax}" />
+							<Text 
+								id="idSupplierpFax"
+								text="{northwindRemote>Fax}" />
+							<Label text="{i18n>Supplier.HomePage}" />
+							<Text 
+								id="idSupplierpHomePage"
+								text="{northwindRemote>HomePage}" />
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>

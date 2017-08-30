@@ -1,0 +1,9 @@
+<mvc:View controllerName="sap.ui.demo.wt.controller.example"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
+	busyIndicatorDelay="0">
+	<Page id="examplePage" title="{i18n>Product.ProductDetailsOf}"
+		showNavButton="true" navButtonPress="onNavBack" class="sapUiResponsiveContentPadding">
+		<content>
+		</content>
+	</Page>
+</mvc:View>

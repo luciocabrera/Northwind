@@ -1,0 +1,308 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "sap.ui.demo.wt",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "ach": "CA-UI5-DOC",
+        "dataSources": {
+            "northwindRemote": {
+                "uri": "/system-local/public/lcabrera/MyNorthWindOnHANA/services/northwind.xsodata",
+                "type": "OData"
+            }
+        }
+    },
+
+
+
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": "sap.ui.demo.wt.view.App",
+        "dependencies": {
+            "minUI5Version": "1.30",
+            "libs": {
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sap.ui.demo.wt.i18n.i18n"
+                }
+            },
+            "northwindRemote": {
+                "dataSource": "northwindRemote",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "defaultBindingMode": "twoWay",
+                    "useBatch": false,
+                    "refreshAfterChange": true,
+                    "disableHeadRequestForToken": true
+                }
+            }
+
+        },
+        "resources": {
+            "css": [{
+                "uri": "css/style.css"
+            }]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "sap.ui.demo.wt.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "transition": "slide",
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [{
+                    "pattern": "",
+                    "name": "appHome",
+                    "target": "home"
+                },
+
+                {
+                    "pattern": "example",
+                    "name": "example",
+                    "target": "example"
+                },
+
+                {
+                    "pattern": "detail/{detailPath}",
+                    "name": "detail",
+                    "target": "detail"
+                },
+                {
+                    "pattern": "invoice/{detailPath}",
+                    "name": "invoice",
+                    "target": "invoice"
+                },
+                {
+                    "pattern": "invoicesList",
+                    "name": "invoicesList",
+                    "target": "invoices"
+                },
+                {
+                    "pattern": "invoicesOverview:?query:",
+                    "name": "invoicesOverview",
+                    "target": ["invoicesOverview", "InvoiceOverviewContent"]
+                },
+                {
+                    "pattern": "productsOverview:?query:",
+                    "name": "productsOverview",
+                    "target": ["productOverviewTop", "productOverviewContent"]
+                },
+                {
+                    "pattern": "product/{detailPath}",
+                    "name": "product",
+                    "target": "product"
+                },
+                {
+                    "pattern": "suppliersMainOverview:?query:",
+                    "name": "suppliersMainOverview",
+                    "target": ["suppliersMainOverview", "supplierOverviewContent"]
+                },
+                {
+                    "pattern": "supplier/{detailPath}",
+                    "name": "supplier",
+                    "target": "supplier"
+
+                },
+                {
+                    "pattern": "supplierMaintenance/{detailPath}",
+                    "name": "supplierMaintenance",
+                    "target": "supplierMaintenance"
+                },
+                {
+                    "pattern": "customerMaintenance/{detailPath}",
+                    "name": "customerMaintenance",
+                    "target": "customerMaintenance"
+                },
+                {
+                    "pattern": "productMaintenance/{detailPath}",
+                    "name": "productMaintenance",
+                    "target": "productMaintenance"
+                },
+                {
+                    "pattern": "productCreate/{detailPath}",
+                    "name": "productCreate",
+                    "target": "productCreate"
+                },
+
+                {
+                    "pattern": "customersOverview",
+                    "name": "customersOverview",
+                    "target": ["customersOverview", "customerOverviewContent"]
+                },
+                {
+                    "name": "supplierProducts",
+                    "pattern": "supplier/{detailPath}/supplierProducts/{detailPath}",
+                    "target": ["supplier", "supplierProducts"]
+
+                },
+                {
+                    "pattern": "customer/{detailPath}",
+                    "name": "customer",
+                    "target": "customer"
+                },
+                {
+                    "name": "highChart",
+                    "pattern": "highChart",
+                    "target": "highChart"
+
+                },
+                {
+                    "name": "highChart2",
+                    "pattern": "highChart2",
+                    "target": "highChart2"
+
+                }
+            ],
+            "targets": {
+
+                "home": {
+                    "viewName": "Home",
+                    "viewLevel": 1
+                },
+                "example": {
+                    "viewName": "example"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "transition": "show"
+                },
+                "highChart": {
+                    "viewPath": "sap.ui.demo.wt.highchart",
+                    "viewName": "HighChart"
+                },
+                "highChart2": {
+                    "viewPath": "sap.ui.demo.wt.highchart2",
+                    "viewName": "HighChart2"
+                },
+                "detail": {
+                    "viewName": "Detail"
+                },
+                "invoice": {
+                    "viewName": "Invoice"
+                },
+                "product": {
+                    "viewPath": "sap.ui.demo.wt.product",
+                    "viewName": "Product"
+                },
+                "supplier": {
+                    "viewPath": "sap.ui.demo.wt.supplier",
+                    "viewName": "Supplier"
+                },
+                "supplierMaintenance": {
+                    "viewPath": "sap.ui.demo.wt.supplier",
+                    "viewName": "SupplierMaintenance"
+                },
+                "customerMaintenance": {
+                    "viewPath": "sap.ui.demo.wt.customer",
+                    "viewName": "CustomerMaintenance"
+                },
+                "productMaintenance": {
+                    "viewPath": "sap.ui.demo.wt.product",
+                    "viewName": "ProductMaintenance"
+                },
+                "productCreate": {
+                    "viewPath": "sap.ui.demo.wt.product",
+                    "viewName": "ProductCreate"
+                },
+                "invoices": {
+                    "viewName": "invoiceList"
+                },
+                "invoicesOverview": {
+                    "viewPath": "sap.ui.demo.wt.invoice",
+                    "viewName": "InvoiceOverview"
+                },
+                "InvoiceOverviewContent": {
+                    "parent": "invoicesOverview",
+                    "viewPath": "sap.ui.demo.wt.invoice",
+                    "viewName": "InvoiceOverviewContent",
+                    "controlId": "InvoiceOverviewParent",
+                    "controlAggregation": "content"
+                },
+                "productsOverview": {
+                    "viewPath": "sap.ui.demo.wt.product",
+                    "viewName": "ProductOverview"
+                },
+                "productOverviewContent": {
+                    "parent": "productsOverview",
+                    "viewPath": "sap.ui.demo.wt.product",
+                    "viewName": "ProductOverviewContent",
+                    "controlId": "ProductOverviewParent",
+                    "controlAggregation": "content"
+                },
+                "productOverviewTop": {
+                    "parent": "productsOverview",
+                    "viewPath": "sap.ui.demo.wt.product",
+                    "viewName": "ProductOverviewTop",
+                    "controlId": "ProductOverviewParent",
+                    "controlAggregation": "content"
+                },
+                "suppliersMainOverview": {
+                    "viewPath": "sap.ui.demo.wt.supplier",
+                    "viewName": "SupplierMainOverview",
+                    "level": 2
+                },
+                "supplierOverviewContent": {
+                    "parent": "suppliersMainOverview",
+                    "viewPath": "sap.ui.demo.wt.supplier",
+                    "viewName": "SupplierOverviewContent",
+                    "controlId": "pageSupplierMainOverview",
+                    "controlAggregation": "content"
+                },
+                "customersOverview": {
+                    "viewPath": "sap.ui.demo.wt.customer",
+                    "viewName": "CustomerOverview"
+                },
+                "customer": {
+                    "viewPath": "sap.ui.demo.wt.customer",
+                    "viewName": "Customer"
+                },
+                "customerOverviewContent": {
+                    "parent": "customersOverview",
+                    "viewPath": "sap.ui.demo.wt.customer",
+                    "viewName": "CustomerOverviewContent",
+                    "controlId": "CustomerOverviewParent",
+                    "controlAggregation": "content"
+                },
+                "supplierProducts": {
+                    "parent": "supplier",
+                    "viewPath": "sap.ui.demo.wt.supplier",
+                    "viewName": "SupplierProducts",
+                    "controlId": "supplierPage",
+                    "controlAggregation": "content",
+                    "level": 4,
+                    "transition": "flip"
+                }
+
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+    xmlns:chart="sap.ui.demo.wt.visualisation"
+	controllerName="sap.ui.demo.wt.visualisation.HighChart"
+	displayBlock="true">
+    <chart:HighChart 
+        width="400px"
+        height="200px"
+
+    />
+</mvc:View>

@@ -1,0 +1,78 @@
+<mvc:View
+	controllerName="sap.ui.demo.wt.invoice.InvoiceOverviewContent"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+>
+    <Table
+        id="invoicesTable"
+        items="{northwindRemote>/Invoices}"
+				itemPress="onItemPress"
+				>
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="{i18n>Invoices}" level="H2"/>
+                    <ToolbarSpacer />
+                    <SearchField id="invoicesTableSearchField"  search="onSearchTable" width="50%" />
+                    <Button icon="sap-icon://sort" press="onSortButtonPressed" />
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <Column id="invoiceOrderIDCol"><Text text="{i18n>OrderID}"/></Column>
+								<Column id="invoiceCustomerNameCol" minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>CustomerName}"/></Column>
+                <Column id="invoiceSalespersonCol" minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>Salesperson}"/></Column>
+                <Column id="invoiceProductIDCol" demandPopin="true"><Text text="{i18n>ProductID}"/></Column>
+                <Column id="invoiceProductNameCol" demandPopin="true"><Text text="{i18n>ProductName}"/></Column>
+								<Column id="invoiceUnitPriceCol" minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>UnitPrice}"/></Column>
+								<Column id="invoiceQuantityCol" minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>Quantity}"/></Column>
+								<Column id="invoiceDiscountCol" minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>Discount}"/></Column>
+								<Column id="invoiceExtendedPriceCol" minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>ExtendedPrice}"/></Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Active">
+                    <cells>
+                        <Text text="{northwindRemote>OrderID}" />
+												<Text text="{northwindRemote>CustomerName}" />
+                        <Text text="{northwindRemote>Salesperson}" />
+                        <Text text="{northwindRemote>ProductID}" />
+                        <Text text="{northwindRemote>ProductName}" />
+												<Text text="{
+													parts: [                
+														{path: 'northwindRemote>UnitPrice'},
+														{path: 'formatter/currency'}
+														],
+														type: 'sap.ui.model.type.Currency'       
+													}" 
+												/>
+												<Text 
+													text="{
+														parts: [                
+															{path: 'northwindRemote>Quantity'},
+															{path: 'formatter/currency'}
+														],
+														type: 'sap.ui.model.type.Currency'       
+													}" 
+												/>
+												<Text 
+													text="{
+														parts: [                
+															{path: 'northwindRemote>Discount'},
+															{path: 'formatter/currency'}
+														],
+														type: 'sap.ui.model.type.Currency'       
+														}" 
+												/> 
+												<Text 
+													text="{
+														parts: [                
+															{path: 'northwindRemote>ExtendedPrice'},
+															{path: 'formatter/currency'}
+														],
+														type: 'sap.ui.model.type.Currency'       
+														}" 
+												/> 
+                   </cells>
+                </ColumnListItem>
+            </items>
+    </Table>
+</mvc:View>

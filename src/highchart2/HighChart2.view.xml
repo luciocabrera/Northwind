@@ -1,0 +1,46 @@
+<mvc:View
+	id="highchartView"
+	controllerName="sap.ui.demo.wt.highchart.HighChart"
+	xmlns="sap.m"
+	xmlns:mvc="sap.core.mvc"
+	xmlns:chart="sap.ui.demo.wt.highchart">
+	<VBox>
+    <Toolbar>
+		<Button 
+			id="TemperatureMonth"
+			icon="sap-icon://appointment" 
+			press="onClickButton"
+			tooltip="{i18n>Visualisation.Charts.MonthResumeTooltip}"
+			class="sapUiTinyMarginEnd" />	
+		<Button 
+			id="TemperatureWeek"
+			icon="sap-icon://appointment-2" 
+			press="onClickButton"
+			tooltip="{i18n>Visualisation.Charts.WeekResumeTooltip}"
+			class="sapUiTinyMarginEnd" />	    
+		<Button 
+			id="TemperatureDay"
+			icon="sap-icon://calendar" 
+			press="onClickButton"
+			tooltip="{i18n>Visualisation.Charts.DailyResumeTooltip}"
+			class="sapUiTinyMarginEnd" />
+		<Button 
+			id="TemperatureHour"
+			icon="sap-icon://date-time" 
+			press="onClickButton"
+			tooltip="{i18n>Visualisation.Charts.HourResumeTooltip}"
+			class="sapUiTinyMarginEnd" />	
+		<Button 
+			id="TemperatureDetailed"
+			icon="sap-icon://accelerated" 
+			press="onClickButton"
+			tooltip="{i18n>Visualisation.Charts.DetailedResumeTooltip}"
+			class="sapUiTinyMarginEnd" />	
+    </Toolbar>
+		<chart:HighChartControl 
+	        width="100%"
+	        height="100%"
+	        config="{view>/chartConfig}"
+	    />
+    </VBox>
+</mvc:View>
