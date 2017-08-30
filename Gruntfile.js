@@ -22,6 +22,7 @@ module.exports = function(grunt) {
                 options: {
                     port: 8080,
                     hostname: 'localhost',
+                    //    livereload: true,
                     keepalive: true,
                     base: 'src',
                     middleware: function(connect, options) {
@@ -34,13 +35,12 @@ module.exports = function(grunt) {
                     }
                 },
                 proxies: [{
-                    context: '/system-local/public/lcabrera/MyNorthWindOnHANA',
+                    context: '/system-local/public/lcabrera/MyNorthWindOnHANA/',
                     host: '52.210.13.50',
                     port: 8010,
                     https: false,
                     headers: {
-                        "Authorization": "Basic " + new Buffer("lcabrera:Diego261209").toString('base64')
-                            //"cookie": "xsIdBBE999A7C321FB19324EDD11DEC33693=9C7E9AE2C60D744293C34504D44BF0AB; sapxslb=52A300E5DDEB224183C1C096B0ABC919"
+                        "Authorization": "Basic " + new Buffer("LCABRERA:Diego261209").toString('base64')
                     }
                 }, {
                     context: '/sap/bc/shell_json/',
@@ -52,9 +52,9 @@ module.exports = function(grunt) {
                     }
                 }]
             },
+
             dist: {}
         },
-
 
         openui5_preload: {
             component: {
@@ -100,6 +100,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-openui5');
     grunt.loadNpmTasks('grunt-eslint');
+    //  grunt.loadNpmTasks('grunt-livereload');
 
 
     grunt.registerTask('serve', function(target) {

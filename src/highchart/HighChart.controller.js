@@ -117,7 +117,7 @@ sap.ui.define([
             this._updateChartConfig({
                 chart: {
                     zoomType: 'x',
-                    type: 'linegradiant'
+                    type: 'area'
                 },
                 xAxis: {
                     type: 'datetime'

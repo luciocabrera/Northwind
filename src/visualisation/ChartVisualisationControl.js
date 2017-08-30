@@ -1,14 +1,14 @@
 sap.ui.define([
     "sap/ui/core/Control",
-   // "sap/ui/thirdparty/c3"
-    "sap/ui/demo/wt/js/c3"
+    // "sap/ui/thirdparty/c3"
+    "sap/ui/demo/wt/node_modules/d3/build/d3"
 ], function(
     Control,
-    c3
+    d3
 ) {
     var control = Control.extend("sap.ui.demo.wt.visualisation.ChartVisualisationControl", {
-    	
-  
+
+
         metadata: {
             properties: {
                 width: {
@@ -58,22 +58,22 @@ sap.ui.define([
         },
 
         _createLineChart: function() {
-       
-        
-        	d3.selectAll("p")
-        	  .data([4, 8, 15, 16, 23, 42])
-        	    .style("font-size", function(d) { return d + "px"; });
-        	
+
+
             d3.selectAll("p")
-            .data([4, 8, 15, 16, 23, 42])
-              .style("font-size", function(d) { return d + "px"; }.bind(this));
-        	  
-        	  
-      //  d3.rebind( "#" + this.getId())	  
-  
-        	  
-      	
-          c3.generate({
+                .data([4, 8, 15, 16, 23, 42])
+                .style("font-size", function(d) { return d + "px"; });
+
+            d3.selectAll("p")
+                .data([4, 8, 15, 16, 23, 42])
+                .style("font-size", function(d) { return d + "px"; }.bind(this));
+
+
+            //  d3.rebind( "#" + this.getId())	  
+
+
+
+            c3.generate({
                 bindto: "#" + this.getId(),
                 data: {
                     columns: [
@@ -82,7 +82,7 @@ sap.ui.define([
                     ]
                 }
             });
-            },
+        },
 
         _createXYChart: function() {
             d3.generate({

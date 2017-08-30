@@ -50,7 +50,7 @@
 							icon="sap-icon://bar-chart" 
 							press="onNavHighChart2"
 							class="sapUiTinyMarginEnd" />							
-							
+						
 		</content>
 	</Page>
 </mvc:View>

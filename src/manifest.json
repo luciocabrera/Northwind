@@ -55,7 +55,7 @@
                 "settings": {
                     "odataVersion": "2.0",
                     "defaultBindingMode": "twoWay",
-                    "useBatch": false,
+                    "useBatch": true,
                     "refreshAfterChange": true,
                     "disableHeadRequestForToken": true
                 }

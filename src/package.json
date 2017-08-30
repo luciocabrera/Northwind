@@ -9,6 +9,7 @@
   "author": "",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "highcharts": "~5.0.14"
+    "highcharts": "~5.0.14",
+    "d3": "~4.10.0"
   }
 }

@@ -10,12 +10,12 @@ sap.ui.define([
         },
 
         init: function() {
-        	
+
             UIComponent.prototype.init.apply(this, arguments);
             var oModel = new JSONModel();
             oModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
             this.setModel(oModel);
-            this.getRouter().initialize();   
+            this.getRouter().initialize();
 
         }
     });
