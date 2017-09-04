@@ -23,36 +23,7 @@ sap.ui.define([
                     },
                     xAxis: {
                         categories: []
-                    },
-                    plotOptions: {
-                        area: {
-                            fillColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, Highcharts.getOptions().colors[0]],
-                                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                                ]
-                            },
-                            marker: {
-                                radius: 2
-                            },
-                            lineWidth: 1,
-                            states: {
-                                hover: {
-                                    lineWidth: 1
-                                }
-                            },
-                            threshold: null
-                        }
-                    },
-                    series: [{
-                        data: []
-                    }]
+                    }
                 }
             });
             return charConfig;
@@ -77,18 +48,16 @@ sap.ui.define([
             this._getData(sPath);
         },
 
-        _getData: function(sPath) {
+        _getDataxxx: function(sPath) {
             var aValuesChart = [];
             var oView = this.getView();
             var oModel = oView.getModel("northwindRemote");
             oModel.read("/" + sPath, {
                 success: function(oData, response) {
                     oData.results.forEach(function(condition) {
-                        var d = new Date(parseInt(condition.Year), parseInt(condition.Month) - 1, parseInt(condition.Day), parseInt(condition.Hour), parseInt(condition.Minutes), parseInt(condition.Seconds), 0);
-                        //aValuesChart.push(  { sCategory: d, sSerie:  parseFloat(condition.AvgTemp) });
-                        var sss = [Date.UTC(parseInt(condition.Year), parseInt(condition.Month) - 1, parseInt(condition.Day), parseInt(condition.Hour), parseInt(condition.Minutes), parseInt(condition.Seconds)), parseFloat(condition.AvgTemp)];
-
-                        aValuesChart.push(sss);
+                        var dateJavaFormatted = new Date(parseInt(condition.Year), parseInt(condition.Month) - 1, parseInt(condition.Day), parseInt(condition.Hour), parseInt(condition.Minutes), parseInt(condition.Seconds), 0);
+                        var oArrayItem = [Date.UTC(parseInt(condition.Year), parseInt(condition.Month) - 1, parseInt(condition.Day), parseInt(condition.Hour), parseInt(condition.Minutes), parseInt(condition.Seconds)), parseFloat(condition.AvgTemp)];
+                        aValuesChart.push(oArrayItem);
                     });
                     this._onPopulateChart(aValuesChart, sPath);
                 }.bind(this),
@@ -98,22 +67,29 @@ sap.ui.define([
             });
         },
 
+        _getData: function() {
+            jQuery.ajax('/system-local/public/lcabrera/MyNorthWindOnHANA/services/northwind_.xsjs/get_data_charts', {
+
+                //            jQuery.ajax('/just/apps/smartfarming/services/geospatial-schakel.xsjs/get_data_charts?location_id=' + locationId + '&growing_id=' + growingId + '&measeure_id=' + measureId, {
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(data) {
+                    this._viewModel.setProperty("/Temperatures", data);
+                }.bind(this),
+                error: function() {
+                    console.error("Unable to get the locations.");
+                }
+            });
+        },
+
         _onPopulateChart: function(aValuesChart, sPath) {
-            var aCategories = [];
-            var aSeries = [];
             var oResourceBundle = this.oView.getModel("i18n").getResourceBundle();
             var sTitle = oResourceBundle.getText(("Visualisations.Charts.Title." + sPath));
             var sSubTitle = oResourceBundle.getText(("Visualisations.Charts.SubTitle"));
             var syAxisTitle = oResourceBundle.getText(("Visualisations.Charts.yAxis.Title"));
             var sSeriesName = oResourceBundle.getText(("Visualisations.Charts.SeriesName.Title." + sPath));
             var sxAxisTitle = oResourceBundle.getText(("Visualisations.Charts.xAxis.Title." + sPath));
-            //			aValuesChart.forEach(function(condition) {
-            // 	    		aCategories.push(condition.sCategory);
-            // 	    		aSeries.push(condition.sSerie);
-            //			});
-
-            debugger;
-
             this._updateChartConfig({
                 chart: {
                     zoomType: 'x',
